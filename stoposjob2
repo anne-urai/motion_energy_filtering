@@ -1,0 +1,26 @@
+# stopos job 1
+
+#PBS -o /home/aeurai/jobs
+#PBS -e /home/aeurai/jobs
+#PBS -j oe
+#PBS -lnodes=1:mem64gb -lwalltime=120:00:00
+
+module load stopos
+module load mcr 
+
+ncores=`sara-get-num-cores`
+
+for ((i=1; i<=ncores; i++)) ; do
+(
+  for ((j=1; j<=1; j++)) ; do
+     stopos next -p pool
+       if [ "$STOPOS_RC" != "OK" ]; then
+        break
+     fi
+ 	eval "/home/aeurai/Dropbox/code/MotionEnergy/MotionEnergyWrap2 $STOPOS_VALUE"
+    stopos remove -p pool
+stopos status -p pool
+   done
+ ) &
+done
+wait
