@@ -6,7 +6,7 @@ function [motionenergy, filters] =  MotionEnergy(stimulus, display, theta, plotm
 % http://www.georgemather.com/Model.html (George Mather)
 % http://mplab.ucsd.edu/~marni/CSHL_Tutorials/MotionEnergy.tar 
 %   (Simoncelli, Glimcher, Chichilnisky)
-%
+% 
 % INPUT
 % stimulus, a 3d matrix containing the x-y-t stimulus movie
 %  display, structure containing the following fields:
@@ -18,11 +18,11 @@ function [motionenergy, filters] =  MotionEnergy(stimulus, display, theta, plotm
 % theta, the angles at which motion energy should be computed
 %   (rightwards = 0, counterclockwise).
 % plotme, generate graphical output (default = false);
-%
+% 
 % OUTPUT
 % motionenergy, length(theta) x size(stimulus, 3) motionenergy filter output
 % filters (optional)
-%
+% 
 % Anne Urai, 2016
 % anne.urai@gmail.com / anneurai.net
 
