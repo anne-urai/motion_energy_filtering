@@ -26,4 +26,4 @@ Anne Urai, 2016
 
 anne.urai@gmail.com / anneurai.net
 
-[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.45138.svg)](http://dx.doi.org/10.5281/zenodo.45138)
+[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.45139.svg)](http://dx.doi.org/10.5281/zenodo.45139)
