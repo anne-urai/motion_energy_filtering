@@ -21,21 +21,21 @@ assert(length(files)==1);
 
 % get tmpdir scratch space (LISA)
 tmppath = getenv('TMPDIR');
-% loadedFile = 0;
-% while ~loadedFile,
-%     try
-%         randi(60); % wait a bit
-%         % load from tmpdir if already exists
-%         load(sprintf('%s/%s', tmppath, files.name));
-%         loadedFile = 1;
-%     catch
-%         % copy file to scratch
-%         copyfile(sprintf('~/Data/Commitment/Behav/%s', files.name), ...
-%             sprintf('%s/%s', tmppath, files.name));
-%         fprintf('copying file to %s/%s \n', tmppath, files.name);
-%         disp('skipping file copy, error, file already exists')
-%     end
-% end
+loadedFile = 0;
+while ~loadedFile,
+    try
+        randi(60); % wait a bit
+        % load from tmpdir if already exists
+        load(sprintf('%s/%s', tmppath, files.name));
+        loadedFile = 1;
+    catch
+        % copy file to scratch
+        copyfile(sprintf('~/Data/Commitment/Behav/%s', files.name), ...
+            sprintf('%s/%s', tmppath, files.name));
+        fprintf('copying file to %s/%s \n', tmppath, files.name);
+        disp('skipping file copy, error, file already exists')
+    end
+end
 
 % cheat a bit and skip scratch space for now
 load(sprintf('~/Data/Commitment/Behav/%s', files.name));
