@@ -9,11 +9,11 @@ See also these excellent tutorials on the 2D equivalent of these filters
 INPUT
 - stimulus, a 3d matrix containing the x-y-t stimulus movie
 - display, structure containing the following fields:
-                      - display.frameRate (in Hz)
-                      - display.ppd (pixels/degree) OR all of the following:
-                      - display.width (in cm of physical screen)
-                      - display.res.width (in pixels)
-                      - display.dist (between eyes and screen, in cm)
+  - display.frameRate (in Hz)
+  - display.ppd (pixels/degree) OR all of the following:
+  - display.width (in cm of physical screen)
+  - display.res.width (in pixels)
+  - display.dist (between eyes and screen, in cm)
 - theta, the angles at which motion energy should be computed
   (rightwards = 0, counterclockwise).
 - plotme, generate graphical output (default = false);
