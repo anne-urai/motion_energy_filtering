@@ -5,6 +5,7 @@ Implements motion energy filtering as described in Adelson & Bergen (1985), on 3
 See also these excellent tutorials on the 2D equivalent of these filters
 * http://www.georgemather.com/Model.html (George Mather)
 * http://mplab.ucsd.edu/~marni/CSHL_Tutorials/MotionEnergy.tar (Simoncelli, Glimcher, Chichilnisky)
+* http://www.cns.nyu.edu/~david/courses/perceptionGrad/syllabus2015.html (David Heeger)
 
 INPUT
 - stimulus, a 3d matrix containing the x-y-t stimulus movie
@@ -23,7 +24,7 @@ OUTPUT
 filters (optional)
 
 Anne Urai, 2016
-
 anne.urai@gmail.com / anneurai.net
+Thanks to Klaus Wimmer
 
 [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.45139.svg)](http://dx.doi.org/10.5281/zenodo.45139)
