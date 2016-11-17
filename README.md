@@ -26,4 +26,4 @@ DEALINGS IN THE SOFTWARE.
 Anne Urai and Klaus Wimmer, 2016
 anne.urai@gmail.com / kwimmer@clinic.ub.es
 
-[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.45139.svg)](http://dx.doi.org/10.5281/zenodo.45139)
+[![DOI](https://zenodo.org/badge/47610027.svg)](https://zenodo.org/badge/latestdoi/47610027)
