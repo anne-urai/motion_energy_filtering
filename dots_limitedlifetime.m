@@ -30,7 +30,7 @@ function [stimuli] = dots_limitedlifetime(setup, window, dots)
 % algorithm, see:
 % Pilly, P. K., & Seitz, A. R. (2009).
 % What a difference a parameter makes: a psychophysical comparison
-% of random dot motion algorithms. Vision Research, 49(13), 1599?612.
+% of random dot motion algorithms. Vision Research, 49(13), 1599-612.
 
 % IMPORTANT direction of motion is clockwise from vertical, so not the unit circle!
 % --------------------------------------------------------------------------
