@@ -1,20 +1,20 @@
-% Permission is hereby granted, free of charge, to any person obtaining a 
-% copy of this software and associated documentation files (the "Software"), 
-% to deal in the Software without restriction, including without limitation 
-% the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-% and/or sell copies of the Software, and to permit persons to whom the 
+% Permission is hereby granted, free of charge, to any person obtaining a
+% copy of this software and associated documentation files (the "Software"),
+% to deal in the Software without restriction, including without limitation
+% the rights to use, copy, modify, merge, publish, distribute, sublicense,
+% and/or sell copies of the Software, and to permit persons to whom the
 % Software is furnished to do so, subject to the following conditions:
-% 
-% The above copyright notice and this permission notice shall be included 
+%
+% The above copyright notice and this permission notice shall be included
 % in all copies or substantial portions of the Software.
 % If you use the Software for your own research, cite the paper.
-% 
-% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
-% OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
-% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
-% FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+% OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+% FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 % DEALINGS IN THE SOFTWARE.
 %
 % Anne Urai and Klaus Wimmer, 2016
@@ -22,7 +22,7 @@
 
 function stim = coord2stim(display, coord, theta)
 % transform coordinates into a 3d stimulus movie
-% theta is the angle of dot motion, which will be subtracted to align all
+% theta is the angle of dot motion, which can be used to align all
 % motion in the zero direction (easier for filtering)
 
 nFrames   = size(coord, 1);
@@ -37,23 +37,16 @@ stimpad    = 50; % padding for convolution, avoid edge artefacts in spatial dime
 stimsize  = 2*dotsRadius+1+stimpad;
 
 for f = 1:nFrames,
-    %     % rotate x and y coordinates towards zero direction
-    %     xpos = ceil( squeeze(coord(f, 1, :)) * cosd(theta) ...
-    %         - squeeze(coord(f, 2, :)) * sind(theta) ...
-    %         + display.center(1) );
-    %     ypos = ceil( squeeze(coord(f, 1, :)) * sind(theta) ...
-    %         + squeeze(coord(f, 2, :)) * cosd(theta) ...
-    %         + display.center(2));
-    
     % rotate the whole stimulus movie towards the zero direction
-    % this does the same as the code above, but clearer to read
-    [th,r] = cart2pol(ceil(squeeze(coord(f, 1, :))), ...
-        ceil(squeeze(coord(f, 2, :))));
-    th = th - deg2rad(theta); % rotate by the indicated amount, theta in radians
+    [th,r] = cart2pol(squeeze(coord(f, 1, :)), ...
+        squeeze(coord(f, 2, :)));
+    th = th + deg2rad(theta); % rotate by the indicated amount, theta in radians
     [xpos, ypos] = pol2cart(th, r); % convert back to cartesian coords
+    
     % move towards the center, can't have negative screen indices
-    xpos = xpos + display.center(1); ypos = ypos + display.center(2);
-
+    xpos = round(xpos + display.center(1));
+    ypos = round(ypos + display.center(2));
+    
     % put those coordinates in the stim representation matrix
     for i = 1:nDots, % for each dot
         stim(xpos(i), ypos(i), f) = 1; % put a pixel in the matrix
@@ -68,3 +61,12 @@ assert(size(stim, 1) == stimsize, 'size mismatch');
 assert(size(stim, 2) == stimsize, 'size mismatch');
 
 end
+
+% % rotate x and y coordinates towards zero direction
+% % this does the same as the code above, but less clear to read
+% xpos = ceil( squeeze(coord(f, 1, :)) * cosd(theta) ...
+%     - squeeze(coord(f, 2, :)) * sind(theta) ...
+%     + display.center(1) );
+% ypos = ceil( squeeze(coord(f, 1, :)) * sind(theta) ...
+%     + squeeze(coord(f, 2, :)) * cosd(theta) ...
+%     + display.center(2));
