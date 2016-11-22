@@ -31,7 +31,7 @@ stim      = zeros(display.center(1)*2, display.center(2)*2, nFrames);
 
 % how big is the circle?
 dotsRadius = max(abs(ceil(coord(:))));
-stimpad    = 50; % padding for convolution, avoid edge artefacts in spatial dimension
+stimpad    = 30; % padding for convolution, avoid edge artefacts in spatial dimension
 
 % size of the screen in pixels
 stimsize  = 2*dotsRadius+1+stimpad;
