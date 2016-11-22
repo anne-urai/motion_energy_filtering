@@ -28,6 +28,7 @@ stimsize = size(stim, 1);
 nFrames  = size(stim, 3);
 
 % spatial filtering
+% stim will have been zero-padded
 A0 = zeros(stimsize, stimsize, nFrames);
 B0 = zeros(stimsize, stimsize, nFrames);
 for f = 1:nFrames,

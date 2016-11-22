@@ -31,10 +31,6 @@ stim      = zeros(display.center(1)*2, display.center(2)*2, nFrames);
 
 % how big is the circle?
 dotsRadius = max(abs(ceil(coord(:))));
-stimpad    = 30; % padding for convolution, avoid edge artefacts in spatial dimension
-
-% size of the screen in pixels
-stimsize  = 2*dotsRadius+1+stimpad;
 
 for f = 1:nFrames,
     % rotate the whole stimulus movie towards the zero direction
@@ -53,12 +49,16 @@ for f = 1:nFrames,
     end
 end
 
-% keep smallest bit of the screen, minus padding (avoid filter artefacts)
-x2use = display.center(1)-dotsRadius-stimpad/2 : display.center(1)+dotsRadius+stimpad/2;
-y2use = display.center(2)-dotsRadius-stimpad/2 : display.center(2)+dotsRadius+stimpad/2;
+% first, remove non-informative border and make image square
+x2use = display.center(1)-dotsRadius : display.center(1)+dotsRadius;
+y2use = display.center(2)-dotsRadius : display.center(2)+dotsRadius;
 stim  = stim(x2use, y2use, :);
-assert(size(stim, 1) == stimsize, 'size mismatch');
-assert(size(stim, 2) == stimsize, 'size mismatch');
+
+% zero-padding for convolution, avoid edge artefacts in spatial dimension
+% full convolution = [ma + mb - 1]
+% assert 'same' == 'valid', see applyfilters c
+stimpad    = roundn(2*floor(floor((2) * display.ppd) / 2) + 1, 2);
+stim       = padarray(stim, [stimpad stimpad], 0, 'both');
 
 end
 
