@@ -5,6 +5,9 @@ See also these excellent tutorials on the 2D equivalent of these filters
 * http://mplab.ucsd.edu/~marni/CSHL_Tutorials/MotionEnergy.tar (Simoncelli, Glimcher, Chichilnisky)
 * http://www.cns.nyu.edu/~david/courses/perceptionGrad/syllabus2015.html (David Heeger)
 
+And see this version from the Gallant lab, which includes filtering over a color dimension:
+* https://github.com/gallantlab/motion_energy_matlab
+
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
 to deal in the Software without restriction, including without limitation
