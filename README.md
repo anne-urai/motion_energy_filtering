@@ -1,3 +1,8 @@
+
+**Urai AE & Wimmer K (2016). _Spatiotemporal motion energy filtering: a Matlab implementation._ Zenodo, http://doi.org/10.5281/zenodo.167351.**
+
+ [![DOI](https://zenodo.org/badge/47610027.svg)](https://zenodo.org/badge/latestdoi/47610027)
+
 Implements motion energy filtering as described in Adelson & Bergen (1985), on 3D moving dot stimuli as done in Kiani et al. (2008) and others. See tutorial.m for explanation of how to use the code.
 
 See also these excellent tutorials on the 2D equivalent of these filters
@@ -28,5 +33,3 @@ DEALINGS IN THE SOFTWARE.
 
 Anne Urai and Klaus Wimmer, 2016
 anne.urai@gmail.com / kwimmer@clinic.ub.es
-
-[![DOI](https://zenodo.org/badge/47610027.svg)](https://zenodo.org/badge/latestdoi/47610027)
